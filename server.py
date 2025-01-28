@@ -11,12 +11,12 @@ def start_server():
 
     try:
         while True:
-            data = conn.recv(1024)
+            data = conn.recv(1024).decode()
             if not data:
                 break
-            print(f"Client: {data.decode('utf-8')}")
+            print("Client: "+data)
             response = input("Server: ")
-            conn.send(response.encode('utf-8'))
+            conn.send(response.encode())
     except KeyboardInterrupt:
         print("Server stopped by user.")
     finally:
